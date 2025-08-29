@@ -1,2 +1,2 @@
 # Atividades_Fatec
-Registro de atividades das aulas na Fatec Registro
+Registro de atividades das aulas na Fatec-Registro, SP
