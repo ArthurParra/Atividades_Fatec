@@ -27,7 +27,7 @@ ListaClientes.forEach((pessoa) => {
         <p>
             Nome do Cliente: ${pessoa.nome}<br>
             Endereço: ${pessoa.endereco}<br>
-            CPF: ${pessoa.cpf}<br>
+            CPF: ${pessoa.cpf}<br><br>
         </p>
         `);
 });
