@@ -1,3 +1,6 @@
+ HEAD
+//criando uma variavel atribuido a um objeto
+ 
 const pessoa = {
   constructor(nome, endereco, cpf) {
     this.nome = nome;
