@@ -1,3 +1,5 @@
+//Segunda lista de atividades:
+
 const pessoa = {
   constructor(nome, endereco, cpf) {
     this.nome = nome;
