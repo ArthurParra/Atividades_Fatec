@@ -1,4 +1,4 @@
-//Primeira Lista de Atividades
+//Atividade Funções JavaScript
 
 const user = prompt(`Ola! Por favor me informe seu nome:`);
 

@@ -1,4 +1,4 @@
-//Segunda lista de atividades:
+//Atividade Arrays e Objetos
 
 const pessoa = {
   constructor(nome, endereco, cpf) {
