@@ -1,0 +1,39 @@
+#container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa; /* fundo inicial cinza claro */
+  transition: background-color 0.5s ease;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+#DarkButton {
+  background-color:#1c1d1c;
+  color: white;
+}
+
+#LightButton {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+#GrayButton {
+    background-color: #333;
+    color: #FFFFFF
+}
+
+h1{
+    text-align: center;
+    font-family: Geneva;
+    color: #B19CD9;
+}
