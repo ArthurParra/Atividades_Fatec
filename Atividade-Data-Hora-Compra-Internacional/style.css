@@ -1,0 +1,9 @@
+body{
+    background-color: #000;
+    text-align: center;
+}
+
+h1,p{
+    color: #008000;
+    font-family: Tahoma;
+}

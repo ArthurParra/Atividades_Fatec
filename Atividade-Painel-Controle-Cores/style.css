@@ -4,8 +4,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fafafa; /* fundo inicial cinza claro */
+  background-color: #fafafa; 
   transition: background-color 0.5s ease;
+}
+
+h1{
+    text-align: center;
+    font-family: Geneva;
+    color: #B19CD9;
 }
 
 button {
@@ -30,10 +36,4 @@ button {
 #GrayButton {
     background-color: #333;
     color: #FFFFFF
-}
-
-h1{
-    text-align: center;
-    font-family: Geneva;
-    color: #B19CD9;
 }
