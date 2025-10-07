@@ -117,3 +117,111 @@ delimiter ;
 
 call RegistrarVenda(2,8);
 select * from vendas;
+
+delimiter //
+create function CalculaEstoque(id int) returns int
+    begin
+        declare estoqueAtual int;
+        declare qtdVenda int;
+        declare vendasTotal int;
+        declare estoqueAtualizado int;
+
+        Select estoque into estoqueAtual from livros where livroId=id;
+        select sum(quantidade) into qtdVenda from vendas where livroId=id;
+        set estoqueAtualizado = estoqueAtual - qtdVenda;
+
+        return estoqueAtualizado;
+    end//
+delimiter ;
+
+select * from livros;
+select CalculaEstoque(2);
+select * from vendas;
+
+
+delimiter //
+create function valorVenda(id int, qtd int) returns decimal(10,2)
+    begin
+        declare valorUnit decimal(10,2);
+        declare valorVenda decimal(10,2);
+
+         -- Buscar o valor unitário do livro vendido
+        select preco into valorUnit from livros where livroId=id;
+
+        -- Calcular o valor total do livro vendido
+        set valorVenda = valorUnit * qtd;
+
+        -- Retorna o valor total do livro vendido
+        return valorVenda;
+    end//
+delimiter ;
+
+delimiter //
+create function CalculaBaixaEstoque (id int, qtd int) returns int
+    begin
+        declare estoqueAtual int;
+        declare estoqueAtualizado int;
+
+        -- Buscar o estoque atual
+        select estoque into estoqueAtual from livros where livroId=id;
+
+        -- Calcular novo estoque
+        set estoqueAtualizado = estoqueAtual - qtd;
+
+        -- Retornar o valor atualizado do estoque
+        return estoqueAtualizado;
+    end//
+delimiter ;
+
+-- Baixar estoque
+delimiter //
+create procedure baixarEstoque (in id int, in qtd int)
+    begin
+        declare estoqueAtualizado int;
+
+        set estoqueAtualizado = CalculaBaixaEstoque(id,qtd);
+
+        update livros set estoque = estoqueAtualizado where livroId=id;
+    end//
+delimiter ;
+
+-- CadVenda
+
+delimiter //
+create procedure cadVenda (in id int, in qtd int)
+    begin
+        declare venda int;
+        set venda = valorVenda(id, qtd);
+        insert into vendas (livroId, data_venda, quantidade, valor_total) values
+        (id, curdate(), qtd, venda);
+    end//
+delimiter ;
+
+
+select * from vendas;
+select * from livros;
+call cadVenda(3,2);
+
+
+delimiter //
+create trigger vender
+after insert on vendas
+for each row
+begin
+    -- chamar procedure baixarEstoque
+    call baixarEstoque(NEW.livroId, NEW.quantidade);
+end//
+delimiter ;
+
+
+select * from livros;
+call cadVenda(1,5);
+select * from vendas;
+select * from livros;
+
+
+create view ListaVenda as
+select vendaId, vendas.livroId, livros.titulo, data_venda, valor_total from vendas
+inner join livros on livros.livroId - vendas.livroId;
+
+select * from ListaVenda;
