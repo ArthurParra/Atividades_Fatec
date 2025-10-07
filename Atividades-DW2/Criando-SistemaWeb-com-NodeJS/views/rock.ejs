@@ -1,0 +1,28 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<h1 class="text-center text-primary"> Álbuns de Rock Classico</h1>
+<p class="text-center">Aqui voc~e encontrao melhor do Rock Classico</p>
+
+<table class="table table-striped mt-4">
+  <thead class="table-dark">
+    <tr>
+      <th>Título</th>
+      <th>Artista</th>
+      <th>Ano</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% albums.forEach(album => { %>
+      <tr>
+        <td><%= album.title %></td>
+        <td><%= album.artist %></td>
+        <td><%= album.ano %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+    <!-- Links para a pagina home -->
+    <ul>
+        <li><a href="/">Ir pra Homepage</a></li>
+    </ul>
+<%- include ('partials/footer.ejs') %>

@@ -1,0 +1,42 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<h1>Bem Vindo a Pagina de Albuns! </h1>
+<hr>
+    <h3>Lista de Albuns: </h3>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Titulo:</th>
+                <th>Artista:</th>
+                <th>Ano:</th>
+                <th>Capa:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--FOREACH-->
+            <% albuns.forEach(album => { %>
+                <tr>
+                    
+                    <td><%= album.title %></td>
+                    <td><%= album.artist %></td>
+                    <td><%= album.ano %></td>
+                    <td><img src="<%= album.img %>" alt="capa do album" style="height:80px; border-radius:8px;"></td>
+                </tr>
+            <% }) %>
+            
+        </tbody>
+    </table>
+
+    <ul>
+        <li><a href="/albuns/pop">Ir para lista de Pop</a></li>
+        <li><a href="/albuns/rock">Ir para lista de Rock CLasasico</a></li>
+        <li>
+    <a href="/albuns/metal">Ir para Lista de Metal</a>
+  </li>
+    <li>
+    <a href="/albuns/alternativo">Ir para Lista de Rock Alternativo</a>
+  </li>
+
+        <li><a href="/">Voltar para Homepage</a></li>
+    </ul>
+<%- include ('partials/footer.ejs') %>
