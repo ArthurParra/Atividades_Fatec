@@ -30,12 +30,7 @@ public class Caixa {
     
     //metodos de operação:
     public void depositar(double valor){
-        if (valor  > 0){
-            saldo += valor;
-            System.out.println("Depósito de R$"+ valor + " realizado com sucesso!");
-        }else{
-            System.out.println("Atenção! - Valor invalido para deposito.");
-        }
+        String valorInput = JOptionPane.show
     }
     
     public void sacar(double valor){
