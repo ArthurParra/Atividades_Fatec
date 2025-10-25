@@ -5,7 +5,7 @@ use PI_Ponkan;
 -- iniciando criação das tabelas
 create table usuarios(
     id int auto_increment primary key,
-    nome varchar(100),
+    nome varchar(100) not null,
     faculdade varchar(100),
     curso varchar(100) not null,
     email varchar(255),
@@ -68,6 +68,7 @@ create table classificacoes(
     pinta_preta varchar(50),
     saudavel varchar(50),
     man_preta varchar(50),
+    mna_virulenta varchar(50),
     man_sardenta varchar(50),
     foreign key(foto_id) references fotos(id)
 );
@@ -95,7 +96,7 @@ create table diagnosticos(
 
 -- ações possuem planos de ação e consultam dados temporais
 create table acoes(
-    id_acao int auto_increment primary key,
+    id int auto_increment primary key,
     plano_id int,
     dt_hr_inicio datetime,
     dt_hr_fim datetime,
@@ -167,10 +168,10 @@ create table previsivo(
 -- entidade associativa entre as ações e dados temporais
 create table consulta_temporal(
     id_consulta int auto_increment primary key,
-    id_acao int,
+    acao_id int,
     id_dado_previsivo int,
     id_dado_historico int,
-    foreign key (id_acao) references acoes(id_acao),
+    foreign key (acao_id) references acoes(id),
     foreign key (id_dado_previsivo) references previsivo(id_previsivo),
     foreign key (id_dado_historico) references historico(id_historico)
 );
@@ -182,3 +183,70 @@ insert into usuarios (nome, faculdade, curso, email, senha, telefone, data_nasci
 ('Myrella Dias', 'Universidade X','Biomedicina','MymyDias@gmail.com','Dokidoki456','(11)97654-3210','1998-11-30','aluno','Rua DomCastellani, 789','22.222.222/0001-33');
 
 -- Próximo passo: popular as tabelas: doenças, sintomas, planos_ação e dados_temporais
+-- Depois criar procedures para automatizar processos como inserção de fotos, criação de classificações e diagnosticos.
+
+insert into doencas (nome_doenca, descricao, agente, tratamento, profilaxia) values
+('Mancha Preta', 'Doenca fungica que afetas as folhas e frutos da Ponkan, causando manchas escuras e queda prematura dos frutos.', 'Fungo Phyllosticta citricarpa', 'Aplicacao de Fungicidas especificos e manejo adequado da plantacao.', 'Evitar excesso de umidade, realizar podas para melhorar a ventilacao e utilizar sementes certificadas.'),
+('Falsa Melanose', 'Doenca que provoca manchas amareladas nas folhas e frutos, afetando a qualidade da fruta.', 'Fungo Guignardia citricarpa', 'Uso de fungicidas apropriados e praticas culturais adequadas.', 'Manter a plantacao limpa, evitar o acumulo de folhas caidas e restos de poda.'),
+('MNA Virulenta', 'Doenca bacteriana que causa manchas oleosas nas folhas e frutos, levando a queda prematura e perda de qualidade.', 'Bacteria Xanthomonas citri subsp. citri', 'Aplicacao de bactericidas e manejo integrado de pragas.', 'Utilizar mudas certificadas, evitar ferimentos nas plantas e praticar rotacao de culturas.');
+
+insert into sintomas (doenca_id, nome, descricao) values
+(1, 'Manchas Pretas', 'Manchas escuras que aparecem nas folhas e frutos, levando a queda prematura dos frutos.'),
+(2, 'Manchas Amareladas', 'Manchas de cor amarela que surgem nas folhas e frutos, afetando a qualidade da fruta.'),
+(3, 'Manchas Oleosas', 'Manchas com aspecto oleoso que aparecem nas folhas e frutos, causando queda prematura e perda de qualidade dos frutos.');
+
+insert into planos_acao (usuario_id, avaliacao, valor_final, validade) values
+(1, 'Plano de acao para controle de Mancha Preta', 150.00, '2024-12-31'),
+(2, 'Plano de acao para controle de Falsa Melanose', 200.00, '2025-06-30'),
+(3, 'Plano de acao para controle de MNA Virulenta', 100.00, '2024-11-30');
+
+insert into dados_temporais (latitude, longitude, dt_hora_coleta, fonte) values
+( -23.550520, -46.633308, '2024-06-01 10:00:00', 'Estacao Meteorologica A'),
+( -22.906847, -43.172896, '2025-09-15 14:00:00', 'Estacao Meteorologica B'),
+( -19.916681, -43.934493, '2024-12-20 09:30:00', 'Estacao Meteorologica C');
+
+-- criacao das procedures:
+
+-- procedure para inserir fotos e ja vincular ao usuario, com validação de usuário
+delimiter //
+create procedure inserir_foto(
+    in_p_usuario_id int, -- id do usuario que esta inserindo a foto
+    in_p_caminho varchar(255), -- caminho da foto
+    in_p_data datetime, 
+    in_p_hora time,
+    in_p_coordenadas varchar(50),
+    in_p_caso int,
+    out p_foto_id int -- id da foto inserida
+)
+begin
+    if not exists (select 1 from usuarios where id = in_p_usuario_id) then
+        signal sqlstate '45000' set message_text = 'Usuário não encontrado';
+    else
+        insert into fotos (usuario_id, caminho, data, hora, coordenadas, caso) values
+        (in_p_usuario_id, in_p_caminho, in_p_data, in_p_hora, in_p_coordenadas, in_p_caso);
+        set p_foto_id = last_insert_id();
+    end if;
+end //
+delimiter ;
+
+-- procedure para criar classificacao e diagnosticos automaticamente, ajustada para estrutura das tabelas
+delimiter //
+create procedure criar_classificacao_diagnostico(
+    in_p_foto_id int,
+    in_p_man_preta varchar(50),
+    in_p_mna_virulenta varchar(50),
+    in_p_plano_id int,
+    in_p_problema varchar(150),
+    in_p_gravidade varchar(50)
+)
+begin
+    declare v_classificacao_id int;
+    -- Insere classificação preenchendo campos existentes
+    insert into classificacoes (foto_id, man_preta, mna_virulenta) values
+    (in_p_foto_id, in_p_man_preta, in_p_mna_virulenta);
+    set v_classificacao_id = last_insert_id();
+    -- Insere diagnóstico vinculado à classificação e plano
+    insert into diagnosticos (classificacao_id, plano_id, problema, gravidade) values
+    (v_classificacao_id, in_p_plano_id, in_p_problema, in_p_gravidade);
+end //
+delimiter ;
