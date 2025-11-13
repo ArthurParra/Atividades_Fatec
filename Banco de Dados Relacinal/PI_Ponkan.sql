@@ -250,3 +250,53 @@ begin
     (v_classificacao_id, in_p_plano_id, in_p_problema, in_p_gravidade);
 end //
 delimiter ;
+
+-- Procedure para atualizar o diagnostico de uma foto/classificação existente
+delimiter //
+create procedure atualizar_diagnostico(
+    in_p_diagnostico_id int,
+    in_p_problema varchar(150),
+    in_p_gravidade varchar(50)
+)
+begin
+    if not exists (select 1 from diagnosticos where id = in_p_diagnostico_id) then
+        signal sqlstate '45000' set message_text = 'Diagnóstico não encontrado';
+    else
+        update diagnosticos
+        set problema = in_p_problema,
+            gravidade = in_p_gravidade
+        where id = in_p_diagnostico_id;
+    end if;
+end //
+delimiter ;
+
+-- Procedure para inserir múltiplos sintomas em lote para uma doença
+delimiter //
+create procedure inserir_sintomas_lote(
+    in_p_doenca_id int,
+    in_p_sintomas_text text
+)
+begin
+    declare v_pos int default 1;
+    declare v_next_pos int default 1;
+    declare v_sintoma varchar(255);
+
+    -- Loop para extrair e inserir cada sintoma separado por vírgula
+    while v_pos > 0 do
+        set v_next_pos = locate(',', in_p_sintomas_text, v_pos);
+        if v_next_pos > 0 then
+            set v_sintoma = trim(substring(in_p_sintomas_text, v_pos, v_next_pos - v_pos));
+            if v_sintoma <> '' then
+                insert into sintomas (doenca_id, descricao) values (in_p_doenca_id, v_sintoma);
+            end if;
+            set v_pos = v_next_pos + 1;
+        else
+            set v_sintoma = trim(substring(in_p_sintomas_text, v_pos));
+            if v_sintoma <> '' then
+                insert into sintomas (doenca_id, descricao) values (in_p_doenca_id, v_sintoma);
+            end if;
+            set v_pos = 0;
+        end if;
+    end while;
+end //
+delimiter ;
