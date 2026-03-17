@@ -12,5 +12,5 @@ class Principal:
         print(f"Valor total = {prod.calcular()}")
 
 #define a inicialização pela classe principal
-if __name__ == "main":
+if __name__ == "__main__":
     Principal.main()
