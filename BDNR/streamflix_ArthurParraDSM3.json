@@ -1,0 +1,366 @@
+// STREAMFLIX — Estudo de Caso MongoDB
+// Aluno: Arthur Parra da Silva
+// Turma: DSM3   Data de entrega: 16/03/2026
+
+// Usando o banco
+use streamflix
+
+// Missão 1 — populando o catálogo de títulos -----------------------------------------------------------
+// Lote 1: filmes
+db.titulos.insertMany([
+  {
+    titulo: "Ainda Estou Aqui",
+    tipo: "filme",
+    ano_lancamento: 2024,
+    pais_origem: "BR",
+    idioma_original: "pt",
+    generos: ["drama", "historia"],
+    sinopse: "Baseado em fatos reais, o filme acompanha Eunice Paiva na luta pelo desaparecimento do marido durante a ditadura militar brasileira.",
+    avaliacao: { media: 8.3, total_votos: 124000 },
+    disponivel_em: ["BR", "PT", "AR", "CL"],
+    catalogo_ativo: true,
+    duracao_min: 137
+  },
+  {
+    titulo: "Bacurau",
+    tipo: "filme",
+    ano_lancamento: 2019,
+    pais_origem: "BR",
+    idioma_original: "pt",
+    generos: ["drama", "suspense", "faroeste"],
+    sinopse: "Moradores de uma pequena cidade do sertão nordestino percebem que sua comunidade desapareceu do mapa e precisam enfrentar uma ameaça vinda de fora.",
+    avaliacao: { media: 7.9, total_votos: 98000 },
+    disponivel_em: ["BR", "PT", "FR", "DE", "US"],
+    catalogo_ativo: true,
+    duracao_min: 131
+  },
+  {
+    titulo: "Anatomia de uma Queda",
+    tipo: "filme",
+    ano_lancamento: 2023,
+    pais_origem: "FR",
+    idioma_original: "fr",
+    generos: ["drama", "thriller"],
+    sinopse: "Uma escritora é julgada pela morte do marido. Entre a versão dela e as evidências, um filho cego se vê obrigado a escolher em quem acreditar.",
+    avaliacao: { media: 8.0, total_votos: 210000 },
+    disponivel_em: ["BR", "FR", "DE", "PT", "US", "AR"],
+    catalogo_ativo: true,
+    duracao_min: 152
+  },
+  {
+    titulo: "O Poço",
+    tipo: "filme",
+    ano_lancamento: 2019,
+    pais_origem: "ES",
+    idioma_original: "es",
+    generos: ["ficcao_cientifica", "suspense"],
+    sinopse: "Em uma prisão vertical com um único prato de comida que desce pelo centro, dois prisioneiros por andar enfrentam a brutalidade do sistema e a escassez.",
+    avaliacao: { media: 7.0, total_votos: 315000 },
+    disponivel_em: ["BR", "ES", "PT", "MX", "AR"],
+    catalogo_ativo: true,
+    duracao_min: 94
+  },
+  {
+    titulo: "Argentina 1985",
+    tipo: "filme",
+    ano_lancamento: 2022,
+    pais_origem: "AR",
+    idioma_original: "es",
+    generos: ["drama", "historia"],
+    sinopse: "A história real do julgamento dos líderes da junta militar argentina, conduzido por dois promotores que enfrentaram ameaças e pressão política.",
+    avaliacao: { media: 7.7, total_votos: 87000 },
+    disponivel_em: ["BR", "AR", "CL", "MX", "ES"],
+    catalogo_ativo: true,
+    duracao_min: 140
+  }
+]);
+
+// Lote 2: séries e documentários
+db.titulos.insertMany([
+  {
+    titulo: "Caras e Bocas",
+    tipo: "serie",
+    ano_lancamento: 2008,
+    pais_origem: "BR",
+    idioma_original: "pt",
+    generos: ["comedia", "romance"],
+    sinopse: "Telenovela ambientada em uma cidade do interior, onde histórias de amor, amizade e humor se entrelaçam no cotidiano dos moradores.",
+    avaliacao: { media: 7.2, total_votos: 42000 },
+    disponivel_em: ["BR", "PT"],
+    catalogo_ativo: true,
+    temporadas: 1
+  },
+  {
+    titulo: "Tóquio Vice",
+    tipo: "serie",
+    ano_lancamento: 2022,
+    pais_origem: "US",
+    idioma_original: "en",
+    generos: ["drama", "crime"],
+    sinopse: "Um jornalista americano se torna o primeiro estrangeiro a trabalhar em uma redação policial de Tóquio e mergulha no submundo do crime organizado japonês.",
+    avaliacao: { media: 7.8, total_votos: 63000 },
+    disponivel_em: ["BR", "US", "JP", "DE", "FR"],
+    catalogo_ativo: true,
+    temporadas: 2
+  },
+  {
+    titulo: "Cangaço Novo",
+    tipo: "serie",
+    ano_lancamento: 2023,
+    pais_origem: "BR",
+    idioma_original: "pt",
+    generos: ["acao", "faroeste", "drama"],
+    sinopse: "No sertão nordestino contemporâneo, um jovem herda a liderança de um bando de cangaceiros e tenta conciliar o legado familiar com seus próprios valores.",
+    avaliacao: { media: 8.1, total_votos: 71000 },
+    disponivel_em: ["BR", "PT", "AR", "MX"],
+    catalogo_ativo: true,
+    temporadas: 2
+  },
+  {
+    titulo: "Succession",
+    tipo: "serie",
+    ano_lancamento: 2018,
+    pais_origem: "US",
+    idioma_original: "en",
+    generos: ["drama"],
+    sinopse: "A família Roy, dona de um conglomerado global de mídia, entra em colapso quando o patriarca anuncia que está cogitando se aposentar, desencadeando uma guerra pelo poder.",
+    avaliacao: { media: 9.0, total_votos: 480000 },
+    disponivel_em: ["BR", "US", "UK", "DE", "FR", "AR"],
+    catalogo_ativo: true,
+    temporadas: 4
+  },
+  {
+    titulo: "Navalha na Carne",
+    tipo: "documentario",
+    ano_lancamento: 2020,
+    pais_origem: "BR",
+    idioma_original: "pt",
+    generos: ["documentario", "arte", "teatro"],
+    sinopse: "Documentário sobre a montagem e o impacto cultural da peça Navalha na Carne, de Plínio Marcos, e sua trajetória polêmica no teatro brasileiro.",
+    avaliacao: { media: 7.5, total_votos: 18000 },
+    disponivel_em: ["BR", "PT"],
+    catalogo_ativo: false,
+    duracao_min: 78
+  }
+]);
+
+// Tarefa 1 - verificação obrigatória
+// 1 - listar todos os títulos
+db.titulos.find();
+// 2 - contar todos os títulos
+db.titulos.countDocuments();
+// 3 - listar um documento
+db.titulos.findOne({'titulo': 'Tóquio Vice'});
+
+
+// Missão 2 - cadastrando usuários e avaliações -----------------------------------------------------------
+// Lote 3 - usuários
+db.usuarios.insertMany([
+  {
+    nome: "Ana Carvalho",
+    email: "ana.carvalho@email.com.br",
+    pais: "BR",
+    plano: "premium",
+    data_cadastro: "2023-03-15",
+    ativo: true,
+    historico: ["Bacurau", "Cangaço Novo", "Succession", "Ainda Estou Aqui"]
+  },
+  {
+    nome: "Lucas Ferreira",
+    email: "lucas.ferreira@email.com.br",
+    pais: "BR",
+    plano: "standard",
+    data_cadastro: "2023-07-22",
+    ativo: true,
+    historico: ["O Poço", "Tóquio Vice", "Anatomia de uma Queda"]
+  },
+  {
+    nome: "María González",
+    email: "maria.gonzalez@correo.ar",
+    pais: "AR",
+    plano: "premium",
+    data_cadastro: "2023-05-10",
+    ativo: true,
+    historico: ["Argentina 1985", "Succession", "Anatomia de uma Queda", "Bacurau"]
+  },
+  {
+    nome: "Tom Nakamura",
+    email: "tom.nakamura@mail.us",
+    pais: "US",
+    plano: "basico",
+    data_cadastro: "2024-01-05",
+    ativo: true,
+    historico: ["Tóquio Vice", "Succession"]
+  },
+  {
+    nome: "Sofia Ribeiro",
+    email: "sofia.ribeiro@email.pt",
+    pais: "PT",
+    plano: "premium",
+    data_cadastro: "2022-11-30",
+    ativo: true,
+    historico: ["Ainda Estou Aqui", "Caras e Bocas", "Bacurau", "Navalha na Carne"]
+  },
+  {
+    nome: "Camilo Herrera",
+    email: "camilo.herrera@correo.cl",
+    pais: "CL",
+    plano: "standard",
+    data_cadastro: "2023-01-18",
+    ativo: false,
+    historico: ["Argentina 1985", "O Poço"]
+  },
+  {
+    nome: "Beatriz Almeida",
+    email: "beatriz.almeida@email.com.br",
+    pais: "BR",
+    plano: "basico",
+    data_cadastro: "2023-09-04",
+    ativo: false,
+    historico: ["Caras e Bocas"]
+  },
+  {
+    nome: "James Carter",
+    email: "james.carter@mail.us",
+    pais: "US",
+    plano: "premium",
+    data_cadastro: "2022-08-19",
+    ativo: true,
+    historico: ["Succession", "Tóquio Vice", "Anatomia de uma Queda", "O Poço", "Bacurau"]
+  }
+]);
+
+// Lote 4 - avaliações
+db.avaliacoes.insertMany([
+    { 
+        titulo_avaliado: "Cangaço Novo",          
+        usuario: "Ana Carvalho",   
+        nota: 9,  
+        comentario: "Uma das melhores séries brasileiras dos últimos anos. Fotografia e elenco impecáveis.",        
+        data_avaliacao: "2024-02-10" 
+    },
+    { 
+        titulo_avaliado: "Succession",            
+        usuario: "Ana Carvalho",   
+        nota: 10, 
+        comentario: "Obra-prima. Cada personagem é um estudo de caráter fascinante e perturbador.",                 
+	data_avaliacao: "2024-01-28" 
+    },
+    { 
+        titulo_avaliado: "Anatomia de uma Queda", 
+        usuario: "Lucas Ferreira", 
+        nota: 8,  
+        comentario: "Roteiro denso e atuações precisas. O final deixa muito espaço para reflexão.",                
+	data_avaliacao: "2024-03-05" 
+    },
+    { 
+        titulo_avaliado: "O Poço",                
+        usuario: "Lucas Ferreira", 
+        nota: 6,  
+        comentario: "A metáfora é poderosa, mas achei o desenvolvimento um pouco previsível depois do meio.",       
+	data_avaliacao: "2023-12-14" 
+    },
+    { 
+        titulo_avaliado: "Argentina 1985",        
+        usuario: "María González", 
+        nota: 9,  
+        comentario: "Emocionante e necessário. Um lembrete importante sobre democracia e memória.",                 
+	data_avaliacao: "2024-02-20" 
+    },
+    { 
+        titulo_avaliado: "Succession",            
+        usuario: "María González", 
+        nota: 9,  
+        comentario: "Roteiro impecável do começo ao fim. O último episódio me deixou sem palavras.",               
+	data_avaliacao: "2024-01-15" 
+    },
+    { 
+        titulo_avaliado: "Tóquio Vice",           
+        usuario: "Tom Nakamura",   
+        nota: 8,  
+        comentario: "A ambientação em Tóquio é muito bem construída. Dá gosto ver a cidade retratada com cuidado.", 
+	data_avaliacao: "2024-03-18" 
+    },
+    { 
+        titulo_avaliado: "Ainda Estou Aqui",      
+        usuario: "Sofia Ribeiro",  
+        nota: 10, 
+        comentario: "Um filme que precisa ser visto. Fernanda Torres entrega uma atuação histórica.",              
+	data_avaliacao: "2024-04-02" 
+    },
+    { 
+        titulo_avaliado: "Bacurau",               
+        usuario: "Sofia Ribeiro",  
+        nota: 8,  
+        comentario: "Cinema brasileiro no seu melhor. Perturbador, original e cheio de camadas.",                  
+	data_avaliacao: "2023-11-09"
+    },
+    { 
+        titulo_avaliado: "Succession",            
+        usuario: "James Carter",   
+        nota: 10, 
+        comentario: "The best show I have ever watched. Nothing comes close.",                                      
+        data_avaliacao: "2023-10-30" 
+    },
+    { 
+        titulo_avaliado: "Bacurau",               
+        usuario: "James Carter",   
+        nota: 7,  
+        comentario: "Interesting and unsettling. Not for everyone, but worth the experience.",                      
+        data_avaliacao: "2024-01-05" 
+    },
+    { 
+        titulo_avaliado: "O Poço",                
+        usuario: "Camilo Herrera", 
+        nota: 5,  
+        comentario: "La idea inicial es brillante pero la historia pierde fuerza en el segundo acto.",             
+	data_avaliacao: "2023-06-22" 
+    }
+]);
+
+// Tarefa 2 - verificação e atualização
+// 1 - confirmar total de usuários inseridos
+db.usuarios.countDocuments();
+// 2 - confirmar o total de avaliações inseridas 
+db.avaliacoes.countDocuments();
+// 3 - atualizar um filme
+db.titulos.updateOne(
+  { titulo: "Succession" },
+  { $set: { "avaliacao.media": 9.7, "avaliacao.total_votos": 480003 } }
+);
+
+
+// Missão 3 — construindo as consultas da plataforma -----------------------------------------------------------
+// 3.1 - retornar apenas título, tipo, gêneros e avaliação média de titulos disponíveis em português
+db.titulos.find({'catalogo_ativo':true, disponivel_em:'BR'}, {'titulo': 1, 'tipo': 1, 'generos': 1, 'avaliacao.media': 1});
+
+// 3.2 - mostrar titulo, avaliação média e avaliação total de votos de apenas 3 títulos que possuam mais que 60.000 votos de forma decrescente por média
+db.titulos.find({'avaliacao.total_votos': {$gt:60000}}, {'titulo': 1, 'avaliacao.media': 1, 'avaliacao.total_votos': 1}).sort({'avaliacao.media': -1}).limit(3);
+
+// 3.3 - retorna titulo, tipo, ano de lançamento e gêneros entre os gêneros de drama e história dos títulos a partir de 2019
+db.titulos.find({'generos': {$in: ['drama','historia']}, 'ano_lancamento': {$gte: 2019}}, {'titulo': 1, 'tipo': 1, 'ano_lancamento': 1, 'generos': 1});
+
+// 3.4 - retorna títulos que contém trecho sequencial 'ca' no campo título, sem diferenciar maiúsculas de minúsculas
+db.titulos.find({'titulo': {$regex: 'ca', $options: 'i'}});
+
+// 3.5 - buscar entre todos os usuários os que possuem plano premium e estão ativos e retornar o nome, email e país ordenados por nome em ordem asc
+db.usuarios.find({'plano': 'premium', 'ativo': true}, {'nome': 1, 'email': 1, 'pais': 1}).sort({'nome': 1});
+
+// 3.6 - um usuário gostaria de assistir uma obra boa e popular da época de 2024, porém está em dúvida e precisa de uma recomendação. Ele confia muito mais nas avaliações dos usuários, portanto, gostaria de lê-las para decidir qual obra assistir. Para não ficar sobrecarregado com uma massa muito grande de informações, procura apenas pelas 3 obras que foram melhores avaliadas. MONTAR UMA QUERY QUE BUSCA AS MELHORES 3 NOTAS E AVALIAÇÕES DOS USUÁRIOS, FILTRANDO O ANO PARA 2024 ENTRE OS REGISTROS E ORGANIZANDO-OS POR NOTA DE FORMA DECRESCENTE.
+db.avaliacoes.find({'data_avaliacao': {$gte: '2024-01-01', $lt:'2025-01-01'}}).sort({'nota': -1}).limit(3);
+
+// Missão 4 — gerenciando o catálogo -----------------------------------------------------------
+// Tarefa 4.1 - inativar/suspender um título
+db.titulos.updateOne({'titulo': 'Caras e Bocas'}, {$set: {'catalogo_ativo': false}});
+db.titulos.find({'catalogo_ativo': false});
+
+// Tarefa 4.2 - expandindo a disponibilidade dos titulos
+db.titulos.updateOne({'titulo': 'Cangaço Novo'}, {$push: {'disponivel_em': 'MX'}});
+db.titulos.updateOne({'titulo': 'Ainda Estou Aqui'}, {$push: {'disponivel_em': 'MX'}});
+db.titulos.find({'titulo': 'Cangaço Novo'});
+db.titulos.find({'titulo': 'Ainda Estou Aqui'});
+
+// Tarefa 4.3 - encerrando assinaturas inativas !deleção de dados
+db.usuarios.find({'ativo': false});
+db.usuarios.deleteMany({'ativo': false});
+db.usuarios.countDocuments();
