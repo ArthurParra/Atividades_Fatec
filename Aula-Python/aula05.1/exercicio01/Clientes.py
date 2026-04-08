@@ -110,7 +110,12 @@ class Clientes:
         #self.mostrar_dados()
 
 
-# terminar metodo de mostrar dados na proxima aula
+    def mostrar_dados(self):
+        from tkinter import messagebox
+        dados = f"Nome: {self.__nome}\n Email: {self.__email}\n Telefone: {self.__telefone}\n Endereço: {self.__endereco}"
+        messagebox.showinfo("Dados do Cliente", dados)
+
+    # terminar metodo de mostrar dados na proxima aula
     
 
     
