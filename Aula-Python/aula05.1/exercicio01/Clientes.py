@@ -105,7 +105,7 @@ class Clientes:
         self.__telefone = self.txt_telefone.get()
         self.__endereco = self.txt_endereco.get()
         
-        self.mostrar_dados()
+        # self.mostrar_dados()
 
         #self.mostrar_dados()
 
