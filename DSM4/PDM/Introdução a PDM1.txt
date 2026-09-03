@@ -1,0 +1,183 @@
+			INTRODUÇÃO A PDM
+
+- O que é o desenvolvimento mobile?
+
+É o desenvolvimento de softwares voltado a celulares e dispositivos moveis
+
+A evolução dos dispositivos moveis:
+
+1990 - Celulares voltados apenas para ligações. Poucos recursos computacionais.
+
+Anos 2000 - Surgimento dos primeiros smartphones.
+Aplicações simples.
+
+2007 - Lançamento do iPhone.
+Popularização das lojas de aplicativos.
+
+2008 - Lançamento do Android.
+
+Atualmente - Smartphones extremamente poderosos.
+Aplicações integradas a nuvem.
+Inteligência artificial.
+Internet das Coisas (IoT).
+
+
+- O mercado de aplicações moveis:
+
+O mercado mobile cresce continuamente e representa uma das áreas mais promissoras da tecnologia.
+
+Principais características;
+
+- Bilhões de smartphones ativos.
+- Milhões de aplicativos disponíveis.
+- Grande demanda por desenvolvedores.
+- Expansão dos serviços digitais.
+
+
+- Onde utilizamos aplicativos?
+
+Bancos digitais;
+Delivery;
+Transporte;
+Educação;
+Saúde;
+Jogos;
+Streaming;
+Redes sociais;
+Compras online;
+Comunicação;
+
+
+
+	     COMPARAÇÃO ENTRE OS TIPOS DE APLICAÇÕES 
+		     DESKTOP X WEB X MOBILE
+
+- Aplicações Desktop -
+
+Aplicações Desktop são instaladas diretamente no computador e executadas utilizando os recursos do sistema operacional.
+
+Características:
+- Alto desempenho
+- Acesso completo ao hardware
+- Necessitam instalação.
+
+
+- Aplicações WEB -
+
+Aplicações Web executam diretamente no navegador e não necessitam instalação.
+
+Características:
+- Funcionam em qualquer navegador moderno
+- Atualização centralizada.
+- Facil distribuição
+- Dependem do navegador
+
+Exemplos:
+- Gmail
+- Google Docs
+- ChatGPT
+- YouTube
+
+- Aplicações Mobiles - 
+
+Aplicações Mobiles são desenvolvidas especificamente para dispositivos moveis.
+
+Características:
+- Interface adaptada ao toque
+- Uso dos sensores do aparelho
+- Integração com câmera e GPS
+- Melhor experiência para smartphones.
+
+Exemplos:
+- WhatsApp
+- Nubank
+- Uber
+- Spotify
+
+
+
+		SISTEMAS OPERACIONAIS MOVEIS
+
+Android;
+- Desenvolvido pelo Google.
+- Maior participação de mercado.
+- Código aberto.
+
+iPhone;
+- Desenvolvido pela Apple.
+- Exclusivo para iPhone.
+- Ecossistema fechado.
+
+
+
+
+
+- Desenvolvimento Hibrido:
+O desenvolvimento hibrido busca reduzir custos permitindo que uma única base de código seja utilizada para Android e iOS.
+
+Frameworks mais conhecidos:
+
+- React Native
+- Flutter
+- Ionic
+
+Vantagens:
+
+- Uma única base de código;
+- Menor custo;
+- Desenvolimento mais rápido;
+- Manutenção simplificada;
+- Grande comunidade;
+
+Desvantagens:
+- Nem todos os recursos são nativos;
+- Dependencia do framework;
+- Algumas funcionalidades exigem código nativo;
+- Pequena perda de desempenho em situações especificas;
+
+
+O que é o React Native??
+React Native é um framework criado pela Meta para desenvolver aplicações moveis utilaizando JavaScript e React.
+
+O que é Expo?
+
+Expo é um conjunto de ferramentas que simplifica o desenvolvimento com React Native. Permite:
+
+- Criar projetos rapidamente;
+- Executar aplicativos sem configuração complexa;
+- Testar diretamente no smartphone;
+- Facilitar a publicação;
+
+Ferramentas utilizadas na disciplina:
+
+- Visual Studio Code
+- Node.js
+- Expo
+- Android Studio
+- Git
+- GitHub
+
+Dinâmica:
+
+Nativos:
+- Gemini
+- Google Fotos
+- 
+
+Hibridos:
+- Discord
+- TikTok
+- Spotify
+- PokemonTCGpocket
+- 
+
+Web:
+- 
+
+
+
+
+
+
+
+

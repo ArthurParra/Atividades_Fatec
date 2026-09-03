@@ -1,0 +1,51 @@
+﻿id,nome,idade,cidade,horas_estudo_semana,nota,frequencia_percentual
+1,Ana,25,Registro,10,5.8,74
+2,Bruno,24,Sete Barras,4,7.7,71
+3,Carla,19,Registro,8,5.8,89
+4,Daniel,19,Sete Barras,8,8.4,92
+5,Eduarda,52,Pariquera-Açu,9,7.0,78
+6,Felipe,18,Cajati,15,6.4,74
+7,Gabriela,31,Jacupiranga,5,5.0,73
+8,Henrique,40,Jacupiranga,10,8.9,93
+9,Isabela,47,Sete Barras,5,9.9,82
+10,João,23,Sete Barras,11,9.1,89
+11,Karen,41,Sete Barras,8,8.4,71
+12,Lucas,32,Jacupiranga,4,9.2,97
+13,Mariana,24,Pariquera-Açu,10,7.0,96
+14,Nathan,41,Cajati,13,6.5,91
+15,Olivia,35,Registro,7,7.4,77
+16,Pedro,28,Pariquera-Açu,14,6.0,99
+17,Quezia,53,Cajati,12,9.1,94
+18,Rafael,21,Cajati,3,8.9,82
+19,Sabrina,35,Registro,8,9.5,88
+20,Thiago,38,Cajati,17,6.7,99
+21,Ursula,47,Cajati,10,5.3,93
+22,Vinicius,53,Sete Barras,10,8.6,83
+23,Wesley,55,Pariquera-Açu,13,5.7,74
+24,Yasmin,50,Pariquera-Açu,4,8.7,97
+25,André,25,Cajati,7,8.9,83
+26,Bianca,22,Pariquera-Açu,14,7.8,84
+27,Caio,51,Jacupiranga,19,9.2,70
+28,Débora,25,Sete Barras,10,8.7,80
+29,Enzo,25,Jacupiranga,15,5.4,70
+30,Fernanda,34,Sete Barras,7,7.3,73
+31,Gustavo,37,Sete Barras,8,5.3,94
+32,Helena,28,Sete Barras,18,9.6,89
+33,Igor,38,Pariquera-Açu,2,5.1,81
+34,Juliana,37,Cajati,3,5.8,88
+35,Kaique,23,Registro,17,9.0,94
+36,Larissa,52,Cajati,6,8.1,100
+37,Marcelo,53,Cajati,10,7.4,89
+38,Nicole,45,Cajati,19,8.7,92
+39,Otávio,30,Jacupiranga,14,10.0,90
+40,Paula,41,Pariquera-Açu,18,7.0,77
+41,Renan,32,Registro,12,4.6,87
+42,Sara,32,Sete Barras,9,4.5,92
+43,Tales,21,Cajati,4,9.5,97
+44,Valentina,39,Registro,18,5.8,91
+45,William,49,Cajati,19,5.2,99
+46,Aline,54,Sete Barras,17,5.8,85
+47,Breno,44,Cajati,5,5.0,83
+48,Camila,40,Pariquera-Açu,15,7.1,93
+49,Diego,21,Registro,3,6.7,80
+50,Elisa,24,Cajati,8,5.5,84

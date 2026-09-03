@@ -1,0 +1,38 @@
+NPM :
+
+O npm (Node Package Manager) é o gerenciador de pacotes oficiais do Node.js
+Ele permite:
+- Instalar bibliotecas
+- Atualizar dependências
+- Remover pacotes
+- Executar scripts do projeto
+[ npm isntall; npm start; npm run android ]
+
+O que é o Expo?
+
+Expo é um conjunto de ferramentas que simplifica o desenvolvimento e aplicações React Native
+Ele fornece:
+- Configuração pronta.
+- Atualização automática.
+- Testes rápidos.
+- Integração com diversos recursos do dispositivo
+- Publicação simplificada.
+
+Android Studio:
+
+Embora utilizemos o Expo, o Android Studio continua sendo uma ferramenta importante.
+
+Ele fornece:
+- Android SDK
+- Emuladores Android
+- Ferramentas de depuração
+- Gerenciamento de dispositivos virtuais
+
+Android SDK:
+
+- o Android SDK (Software Development Kit) contem todas aas bibliotecas necessárias para executar aplicações Android.
+
+Principais componentes:
+- Platform Tools
+- Build Tools
+- 
