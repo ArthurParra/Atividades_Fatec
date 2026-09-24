@@ -60,5 +60,5 @@ export function validateUserInput(input : Partial<UserInput>) : ValidationResult
     return {
         isValid: errors.length === 0,
         errors,
-    } ;
+    };
 }
